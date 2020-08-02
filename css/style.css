@@ -23,14 +23,21 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 8.5rem;
-  opacity: 0.6rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.6;
+}
+
+h2#focus {
+  outline: none;
+}
+
+h1 span#name {
+  color: #7a0202;
+  outline: none;
 }
 
 @media (max-width: 700px) {
-   {
-    #time {
-      font-size: 6rem;
-    }
+  #time {
+    font-size: 6rem;
   }
 }

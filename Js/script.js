@@ -1,20 +1,20 @@
-//DOM Elements
-const time = document.getElementById("time");
-const greeting = document.getElementById("greeting");
-const name = document.getElementById("name");
-const focus = document.getElementById("focus");
+// DOM Elements
+const time = document.getElementById("time"),
+  greeting = document.getElementById("greeting"),
+  name = document.getElementById("name"),
+  focus = document.getElementById("focus");
 
+// Options
 const showAmPm = true;
 
 // Show Time
 function showTime() {
-  let today = new Date();
-  let hour = today.getHours();
-  let min = today.getMinutes();
-  let sec = today.getSeconds();
+  let today = new Date(),
+    hour = today.getHours(),
+    min = today.getMinutes(),
+    sec = today.getSeconds();
 
   // Set AM or PM
-
   const amPm = hour >= 12 ? "PM" : "AM";
 
   // 12hr Format
@@ -33,23 +33,26 @@ function addZero(n) {
   return (parseInt(n, 10) < 10 ? "0" : "") + n;
 }
 
-// SET BAckground and Greeting
+// Set Background and Greeting
 function setBgGreet() {
-  let today = new Date();
-  let hour = today.getHours();
+  let today = new Date(),
+    hour = today.getHours();
 
   if (hour < 12) {
     // Morning
-    document.body.style.backgroundColor = "green";
-    greeting.textContent = "Good Morning";
+    document.body.style.backgroundImage =
+      "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+    greeting.textContent = "Good Morning, ";
   } else if (hour < 18) {
     // Afternoon
-    document.body.style.backgroundColor = "blue";
-    greeting.textContent = "Good Afternoon";
+    document.body.style.backgroundImage =
+      "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+    greeting.textContent = "Good Afternoon, ";
   } else {
     // Evening
-    document.body.style.backgroundColor = "black";
-    greeting.textContent = "Good Evening";
+    document.body.style.backgroundImage =
+      "url('https://i.ibb.co/924T2Wv/night.jpg')";
+    greeting.textContent = "Good Evening, ";
     document.body.style.color = "white";
   }
 }
@@ -63,16 +66,16 @@ function getName() {
   }
 }
 
-// Set name
+// Set Name
 function setName(e) {
   if (e.type === "keypress") {
-    // make sure enter is pressed
+    // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem("name", e.target.InnerText);
+      localStorage.setItem("name", e.target.innerText);
       name.blur();
     }
   } else {
-    localStorage.setItem("name", e.target.InnerText);
+    localStorage.setItem("name", e.target.innerText);
   }
 }
 
@@ -88,24 +91,22 @@ function getFocus() {
 // Set Focus
 function setFocus(e) {
   if (e.type === "keypress") {
-    // make sure enter is pressed
+    // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem("focus", e.target.InnerText);
+      localStorage.setItem("focus", e.target.innerText);
       focus.blur();
     }
   } else {
-    localStorage.setItem("focus", e.target.InnerText);
+    localStorage.setItem("focus", e.target.innerText);
   }
 }
 
 name.addEventListener("keypress", setName);
 name.addEventListener("blur", setName);
-
 focus.addEventListener("keypress", setFocus);
 focus.addEventListener("blur", setFocus);
 
 // Run
-
 showTime();
 setBgGreet();
 getName();
